@@ -1,6 +1,6 @@
 {
   "name": "generator-express-plus-plus",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Basic generator for express using npm as a build tool and babel jade eslint mocha chai with a basic file structure. Ideal boilerplate for small projects.",
   "homepage": "https://github.com/N0bl3/generator-express-plus-plus",
   "author": {
