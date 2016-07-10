@@ -11,9 +11,11 @@ describe('writeConfig', function () {
         author: "You",
         repo: "Empty repo"
       }) // Mock the prompt answers
-      .toPromise();
-  });
-  it('generate config files', function () {
-    assert.file([".babelrc", ".eslintrc", 'public/js/.eslintrc', ".gitignore", "package.json", 'utils/init.js', 'utils/buildJade.js']);
+      .toPromise().done(()=> {
+        it('generate config files', function () {
+          assert.file([".babelrc", ".eslintrc", 'public/js/.eslintrc', ".gitignore", "package.json",
+            'utils/init.js', 'utils/buildJade.js']);
+        });
+      });
   });
 });

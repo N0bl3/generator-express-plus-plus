@@ -5,10 +5,12 @@
     "es6": true,
     "mocha": true
   },
-  "plugins": [
-    "filenames"
-  ],
   "rules": {
-    "filenames/filenames": 0
+    "no-console": 1,
+    "no-shadow": 1,
+    "no-else-return": 1,
+    "consistent-return": 1,
+    "new-cap": 1,
+    "no-underscore-dangle": 1
   }
 }

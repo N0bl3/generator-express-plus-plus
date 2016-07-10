@@ -2,17 +2,26 @@
   "name": "<%= name %>",
   "version": "0.0.0",
   "description": "<%= description %>",
+  "engines": {
+    "node": "6"
+  },
   "homepage": "",
   "author": {
     "name": "<%= author %>"
   },
   "dependencies": {
     "async": "^2.0.0-rc.6",
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "debug": "^2.2.0",
     "express": "^4.14.0",
+    "express-session": "^1.14.0",
     "fs-extra": "^0.30.0",
+    "mongoose": "^4.5.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta3",
     "request": "^2.72.0"
   },
@@ -28,28 +37,30 @@
     "eslint-plugin-import": "^1.10.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
+    "istanbul": "^0.4.4",
     "jsonlint": "^1.6.2",
     "mocha": "latest",
     "postcss-cli": "^2.5.2",
+    "supertest": "latest",
     "uglify-js": "^2.7.0"
   },
   "repository": "<%= repo %>",
   "scripts": {
-    "prebuild": "npm run test",
     "build": "node utils/init.js && npm run build:css && npm run build:jade && npm run build:js",
     "build:css": "postcss --use autoprefixer public/css/*.css -d dist/public/css",
-    "build:jade": "node utils/build-jade.js",
+    "build:jade": "node utils/buildJade.js",
     "build:js": "npm run compile:server && npm run compile:client && npm run uglify",
     "compile:server": "babel server.js -o dist/server.js && babel routes/ -d dist/routes",
     "compile:client": "babel public/js -d dist/public/js",
     "lint": "npm run lint:js && npm run lint:json",
     "lint:js": "eslint */**.js",
     "lint:json": "jsonlint -q package.json",
-    "start": "set DEBUG=server NODE_ENV=development && node server.js",
-    "start:prod": "set NODE_ENV=production && node dist/server.js",
+    "start:dev": "set DEBUG=* NODE_ENV=development && node server.js",
+    "start": "node dist/server.js",
     "prepublish": "npm run build",
     "pretest": "npm run lint",
-    "test": "mocha tests/",
+    "test": "mocha test",
+    "posttest": "istanbul cover --hook-run-in-context node_modules/mocha/bin/_mocha -- -R spec",
     "uglify": "uglifyjs dist/public/js/index.js -o dist/public/js/index.js -c -m -r '$,require,exports'"
   },
   "license": "BSD-2-Clause-FreeBSD"
