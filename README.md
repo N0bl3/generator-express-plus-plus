@@ -16,6 +16,17 @@ Then generate your new project:
 yo express-plus-plus
 ```
 
+You can then run
+```bash
+npm run lint // Runs eslint
+npm run test // Runs mocha after linting with eslint
+npm run build // To create dist file with all assets
+npm start:dev // Runs non compiled files
+npm start // Runs files in dist/ folder
+```
+
+### Warning: currently the dist/ folder is versioned. If that's not your workflow, add it to .gitignore
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
